@@ -158,33 +158,31 @@ header .hero {
     background:
         no-repeat center/100% url('assets/hero.jpg'),
         var(--hero-img-bg);
-    border-radius: 12px;
-    clip-path: border-box;
-    /* box-shadow: -8px 8px 0 var(--contentWrapper-bg); */
-    transition: transform 0.1s ease, border 0.1s ease;
+     /* border-radius + overflow: hidden has annoying visual artifacts */
+    /* clip-path: inset(0 round 12px); */
+    overflow: hidden; /* fine with no border-radius */
+    transition: transform 0.1s ease;
 }
 
 .hero-img:hover {
     transform: scale(1.015);
-    border: 2px solid var(--hero-img-border);
 }
 
 
 .hero-img .hero-img-caption {
+    --img-caption-height: 42px;
     flex: 1 1 0;
+    height: var(--img-caption-height);
     background: var(--hero-img-caption-bg);
     color: var(--hero-img-caption-fg);
     font-style: italic;
-    border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
-    /* border-radius: 12px; */
     padding: 0.6em 1.6em;
-    /* margin: 1rem 1rem; */
     margin: 0;
-    transition: opacity 0.1s ease;
+    transition: transform 0.1s ease;
 }
 
 .hero-img:hover .hero-img-caption {
-    opacity: 0;
+    transform: translateY(var(--img-caption-height));
 }
 
 .hero-caption .hero-button {
