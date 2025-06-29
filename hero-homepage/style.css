@@ -13,7 +13,7 @@
     --header-button-fg-hl: #fff3e5;
     --hero-img-bg: #00302d;
     --hero-img-fg: #00655d;
-    --hero-img-border: #008f83;
+    --hero-img-border: #fff;
         --hero-img-caption-bg: #90837B;
         --hero-img-caption-fg: #ffe7d9;
 
@@ -25,7 +25,7 @@
         --quote-bg: #90837B;
         --quote-fg: #ffe7d9;
         --signup-bg: #DBB381;
-        --signup-fg: #ffefdc;
+        --signup-fg: #fff1e0;
         --signup-hl: #fff;
     --footer-bg: #858480;
     --footer-fg: #dfddd6;
@@ -67,7 +67,7 @@ button {
     letter-spacing: 0.01em;
     border: none;
     cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: background 0.1s ease, color 0.1s ease, border-color 0.1s ease;
 }
 
 /* ---
@@ -162,28 +162,38 @@ header .hero {
 .hero .hero-img {
     flex: 1.2 1 0;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: end;
     background:
         no-repeat center/100% url('assets/hero.jpg'),
         var(--hero-img-bg);
     border-radius: 12px;
-    border: 2px solid var(--hero-img-border);
+    clip-path: border-box;
     /* box-shadow: -8px 8px 0 var(--contentWrapper-bg); */
-    transition: transform 0.3s ease;
+    transition: transform 0.1s ease, border 0.1s ease;
 }
 
 .hero-img:hover {
     transform: scale(1.015);
+    border: 2px solid var(--hero-img-border);
 }
 
+
 .hero-img .hero-img-caption {
+    flex: 1 1 0;
     background: var(--hero-img-caption-bg);
     color: var(--hero-img-caption-fg);
     font-style: italic;
-    border-radius: 12px;
+    border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+    /* border-radius: 12px; */
     padding: 0.6em 1.6em;
-    margin: 1rem 1rem;
+    /* margin: 1rem 1rem; */
+    margin: 0;
+    transition: opacity 0.1s ease;
+}
+
+.hero-img:hover .hero-img-caption {
+    opacity: 0;
 }
 
 .hero-caption .hero-button {
@@ -239,7 +249,7 @@ main .info {
 
 .thumb-item {
     max-width: 150px;
-    transition: transform 0.3s ease;
+    transition: transform 0.1s ease;
 }
 
 .thumb-item:hover {
@@ -284,6 +294,11 @@ main .signup-area {
     background: var(--signup-bg);
     color: var(--signup-fg);
     border-radius: 8px;
+    transition: transform 0.1s ease;
+}
+
+.signup-area:hover {
+    transform: scale(1.015);
 }
 
 .signup-area .signup-area-caption {
