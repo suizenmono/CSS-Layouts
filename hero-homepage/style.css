@@ -1,10 +1,15 @@
 :root {
+    /* ---
+    Palette
+    --- */
+
     --header-bg: #005953;
     --header-fg: #fff;
     --header-navlink: #fff;
-    --header-navlink-hl: #ecebd5;
-        --header-navlink-active-bg: #003833;
-        --header-navlink-active-fg: #00aca1;
+    --header-navlink-bg-hl: #003b37;
+    --header-navlink-fg-hl: #ecebd5;
+        --header-navlink-active-bg: #DBB381;
+        --header-navlink-active-fg: #fff3e5;
     --header-link: #BCBBA7;
     --header-link-hl: #ecebd5;
     --header-button-bg: #F2F0E9;
@@ -22,6 +27,7 @@
         --info-fg: #333333;
         --info-thumb: #333333;
         --info-thumb-caption: #333333;
+        --info-thumb-hl: #DBB381;
         --quote-bg: #90837B;
         --quote-fg: #ffe7d9;
         --signup-bg: #DBB381;
@@ -116,15 +122,22 @@ nav .nav-links li a {
     color: var(--header-navlink);
     height: 100%;
     padding: 1em 1em;
+    background-size: 200% 100%;
+    /* the following indented rules are defined within the non-hover selector to prevent hard cut on anim out */
+        background-position: 100% 0;
+        background-image: linear-gradient(to right, var(--header-navlink-bg-hl) 50%, transparent 50%);
+    transition: background-position 0.2s ease;
 }
 
 nav .nav-links li a.active {
-    background: var(--header-navlink-active-bg);
+    background-color: var(--header-navlink-active-bg);
     color: var(--header-navlink-active-fg);
 }
 
-nav .nav-links li a:hover {
-    color: var(--header-navlink-hl);
+nav .nav-links li a:hover,
+nav .nav-links li a.active:hover {
+    background-position: 0 0;
+    color: var(--header-navlink-fg-hl);
 }
 
 header .hero {
@@ -161,13 +174,13 @@ header .hero {
      /* border-radius + overflow: hidden has annoying visual artifacts */
     /* clip-path: inset(0 round 12px); */
     overflow: hidden; /* fine with no border-radius */
-    transition: transform 0.1s ease;
+    transition: transform 0.1s ease, border 0.1s ease;
 }
 
 .hero-img:hover {
+    border: 2px solid var(--hero-img-border);
     transform: scale(1.015);
 }
-
 
 .hero-img .hero-img-caption {
     --img-caption-height: 42px;
@@ -244,6 +257,8 @@ main .info {
 }
 
 .thumb-item:hover {
+    --info-thumb: #009187;
+    --info-thumb-caption: #009187;
     transform: scale(1.1);
 }
 
@@ -252,12 +267,14 @@ main .info {
     margin-bottom: 1rem;
     border-radius: 20px;
     border: 4px solid var(--info-thumb);
+    transition: border-color 0.1s ease;
 }
 
 .thumb-caption {
     text-align: center;
     font-style: italic;
     color: var(--info-thumb-caption);
+    transition: color 0.1s ease;
 }
 
 main .quote {
