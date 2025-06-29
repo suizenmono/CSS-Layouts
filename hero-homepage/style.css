@@ -61,15 +61,6 @@ p {
     line-height: 1.5;
 }
 
-button {
-    font-family: "Noto Serif CJK JP", serif;
-    font-size: 16px;
-    letter-spacing: 0.01em;
-    border: none;
-    cursor: pointer;
-    transition: background 0.1s ease, color 0.1s ease, border-color 0.1s ease;
-}
-
 /* ---
 Wrapper
 --- */
@@ -202,6 +193,8 @@ header .hero {
     border-radius: 20px;
     background: var(--header-button-bg);
     color: var(--header-button-fg);
+    letter-spacing: 0.01em;
+    transition: background 0.1s ease, color 0.1s ease;
 }
 
 .hero-caption .hero-button:hover {
@@ -318,6 +311,8 @@ main .signup-area {
     border: 2px solid var(--signup-fg);
     background: transparent;
     color: var(--signup-fg);
+    letter-spacing: 0.01em;
+    transition: border-color 0.1s ease, color 0.1s ease;
     /* white-space: nowrap; */
 }
 
